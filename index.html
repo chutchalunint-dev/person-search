@@ -1,0 +1,41 @@
+<h2>ค้นหารายชื่อผู้ทรงคุณวุฒิ</h2>
+
+<input type="text" id="searchInput" placeholder="ค้นหาชื่อ / สาขา / มหาวิทยาลัย">
+<button onclick="search()">ค้นหา</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>ชื่อ</th>
+      <th>ตำแหน่ง</th>
+      <th>สาขาวิชา</th>
+      <th>ความเชี่ยวชาญ</th>
+      <th>สถาบัน</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<script>
+async function search() {
+  const q = document.getElementById('searchInput').value;
+
+  const res = await fetch(`https://your-api.onrender.com/api/search?q=${q}`);
+  const data = await res.json();
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+
+  data.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${row['ชื่อผู้ทรงคุณวุฒิ / Name'] || ''}</td>
+      <td>${row['ตำแหน่งทางวิชาการ / Position*'] || ''}</td>
+      <td>${row['สาขาวิชา / Discipline'] || ''}</td>
+      <td>${row['อนุสาขาวิชา/ความเชี่ยวชาญ /\nSub discipline :'] || ''}</td>
+      <td>${row['มหาวิทยาลัย/สถาบัน /\nInstitution'] || ''}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+</script>
