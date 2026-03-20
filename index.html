@@ -32,8 +32,8 @@ const data = await res.json();
       <td>${row['ชื่อผู้ทรงคุณวุฒิ / Name'] || ''}</td>
       <td>${row['ตำแหน่งทางวิชาการ / Position*'] || ''}</td>
       <td>${row['สาขาวิชา / Discipline'] || ''}</td>
-      <td>${row['อนุสาขาวิชา/ความเชี่ยวชาญ /\nSub discipline :'] || ''}</td>
-      <td>${row['มหาวิทยาลัย/สถาบัน /\nInstitution'] || ''}</td>
+      <td>${row['Sub discipline'] || ''}</td>
+      <td>${row['institution'] || ''}</td>
     `;
     tbody.appendChild(tr);
   });
