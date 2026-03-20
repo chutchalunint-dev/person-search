@@ -20,8 +20,8 @@
 async function search() {
   const q = document.getElementById('searchInput').value;
 
-  const res = await fetch(`https://your-api.onrender.com/api/search?q=${q}`);
-  const data = await res.json();
+const res = await fetch(`https://person-search.onrender.com/api/search?q=${q}`);
+const data = await res.json();
 
   const tbody = document.getElementById('tbody');
   tbody.innerHTML = '';
